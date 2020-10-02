@@ -1,0 +1,12 @@
+*.json
+External.PaymentGateway/obj/
+GloboTicket.Client/obj/
+GloboTicket.Integration.Messages/obj/
+GloboTicket.Integration.MessagingBus/obj/
+GloboTicket.Services.Discount/obj/
+GloboTicket.Services.EventCatalog/obj/
+GloboTicket.Services.Marketing/obj/
+GloboTicket.Services.Order/obj/
+GloboTicket.Services.Payment/obj/Debug/netcoreapp3.1/staticwebassets/GloboTicket.Services.Payment.StaticWebAssets.xml
+GloboTicket.Services.Payment/obj/
+GloboTicket.Services.ShoppingBasket/obj/
