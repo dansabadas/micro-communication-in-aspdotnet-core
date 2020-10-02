@@ -9,6 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using System;
+using GloboTicket.Services.Discount.Services;
 
 namespace GloboTicket.Services.Discount
 {
@@ -31,6 +32,7 @@ namespace GloboTicket.Services.Discount
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
             services.AddControllers();
+            services.AddGrpc();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Discount API", Version = "v1" });
@@ -61,6 +63,7 @@ namespace GloboTicket.Services.Discount
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapGrpcService<DiscountsService>();
             });
         }
     }

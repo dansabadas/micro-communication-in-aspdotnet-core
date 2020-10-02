@@ -10,8 +10,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
+using GloboTicket.Grpc;
+using Grpc.Net.Client;
 using Microsoft.AspNetCore.Http;
 using Polly.CircuitBreaker;
+using Coupon = GloboTicket.Services.ShoppingBasket.Models.Coupon;
 
 namespace GloboTicket.Services.ShoppingBasket.Controllers
 {
@@ -120,8 +123,14 @@ namespace GloboTicket.Services.ShoppingBasket.Controllers
                 //if (basket.CouponId.HasValue)
                 //    coupon = await discountService.GetCoupon(basket.CouponId.Value);
 
+                //if (basket.CouponId.HasValue)
+                //    coupon = await discountService.GetCouponWithError(basket.CouponId.Value);
+
+                var channel = GrpcChannel.ForAddress("https://localhost:5007");
+
+                DiscountService discountService = new DiscountService(new Discounts.DiscountsClient(channel));
                 if (basket.CouponId.HasValue)
-                    coupon = await discountService.GetCouponWithError(basket.CouponId.Value);
+                    coupon = await discountService.GetCoupon(basket.CouponId.Value);
 
                 if (coupon != null)
                 {
