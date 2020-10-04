@@ -10,8 +10,8 @@ namespace GloboTicket.Integration.MessagingBus
 {
     public class AzServiceBusMessageBus: IMessageBus
     {
-        private string connectionString = 
-            "Endpoint=sb://<your-namespace>.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=<your_key>";
+        private string connectionString =
+            "Endpoint=sb://globotickets-sample.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=94p8Z8tcZAUwIAFUG976BQTPv5eOjDMuP1n6vRL38sY=";
 
         public async Task PublishMessage(IntegrationBaseMessage message, string topicName)
         {
@@ -26,7 +26,6 @@ namespace GloboTicket.Integration.MessagingBus
             await topicClient.SendAsync(serviceBusMessage);
             Console.WriteLine($"Sent message to {topicClient.Path}");
             await topicClient.CloseAsync();
-
         }
     }
 }

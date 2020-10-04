@@ -123,14 +123,14 @@ namespace GloboTicket.Services.ShoppingBasket.Controllers
                 //if (basket.CouponId.HasValue)
                 //    coupon = await discountService.GetCoupon(basket.CouponId.Value);
 
-                //if (basket.CouponId.HasValue)
-                //    coupon = await discountService.GetCouponWithError(basket.CouponId.Value);
-
-                var channel = GrpcChannel.ForAddress("https://localhost:5007");
-
-                DiscountService discountService = new DiscountService(new Discounts.DiscountsClient(channel));
                 if (basket.CouponId.HasValue)
-                    coupon = await discountService.GetCoupon(basket.CouponId.Value);
+                    coupon = await discountService.GetCouponWithError(basket.CouponId.Value);
+
+                //var channel = GrpcChannel.ForAddress("https://localhost:5007");
+
+                //DiscountService discountService = new DiscountService(new Discounts.DiscountsClient(channel));
+                //if (basket.CouponId.HasValue)
+                //    coupon = await discountService.GetCoupon(basket.CouponId.Value);
 
                 if (coupon != null)
                 {

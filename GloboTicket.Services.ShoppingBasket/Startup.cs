@@ -43,12 +43,12 @@ namespace GloboTicket.Services.ShoppingBasket
             services.AddHttpClient<IEventCatalogService, EventCatalogService>(c =>
                 c.BaseAddress = new Uri(Configuration["ApiConfigs:EventCatalog:Uri"]));
 
-            //services.AddHttpClient<IDiscountService, DiscountService>(c =>
-            //    c.BaseAddress = new Uri(Configuration["ApiConfigs:Discount:Uri"]))
-            //    .AddPolicyHandler(GetRetryPolicy())
-            //    .AddPolicyHandler(GetCircuitBreakerPolicy());
+            services.AddHttpClient<IDiscountService, DiscountService>(c =>
+                c.BaseAddress = new Uri(Configuration["ApiConfigs:Discount:Uri"]))
+                .AddPolicyHandler(GetRetryPolicy())
+                .AddPolicyHandler(GetCircuitBreakerPolicy());
 
-            services.AddGrpcClient<Discounts.DiscountsClient>(o => o.Address = new Uri(Configuration["ApiConfigs:Discount:Uri"]));
+            //services.AddGrpcClient<Discounts.DiscountsClient>(o => o.Address = new Uri(Configuration["ApiConfigs:Discount:Uri"]));
 
             services.AddDbContext<ShoppingBasketDbContext>(options =>
             {

@@ -84,8 +84,6 @@ namespace GloboTicket.Services.Ordering
             });
 
             app.UseAzServiceBusConsumer();
-
-
         }
     }
 }

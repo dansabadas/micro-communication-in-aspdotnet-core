@@ -13,7 +13,6 @@ namespace GloboTicket.Services.Payment.Services
         private readonly HttpClient client;
         private readonly IConfiguration configuration;
 
-
         public ExternalGatewayPaymentService(HttpClient client, IConfiguration configuration)
         {
             this.client = client;
@@ -26,7 +25,7 @@ namespace GloboTicket.Services.Payment.Services
             var content = new StringContent(dataAsString);
             content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
 
-            var response = await  client.PostAsync(configuration.GetValue<string>("ApiConfigs:ExternalPaymentGateway:Uri") + "/api/paymentapprover", content);
+            var response = await client.PostAsync(configuration.GetValue<string>("ApiConfigs:ExternalPaymentGateway:Uri") + "/api/paymentapprover", content);
 
             if (!response.IsSuccessStatusCode)
                 throw new ApplicationException($"Something went wrong calling the API: {response.ReasonPhrase}");
@@ -34,7 +33,6 @@ namespace GloboTicket.Services.Payment.Services
             var responseString = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
 
             return JsonSerializer.Deserialize<bool>(responseString, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
-
         }
     }
 }
