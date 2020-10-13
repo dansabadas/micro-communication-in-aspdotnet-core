@@ -10,3 +10,4 @@ GloboTicket.Services.Order/obj/
 GloboTicket.Services.Payment/obj/Debug/netcoreapp3.1/staticwebassets/GloboTicket.Services.Payment.StaticWebAssets.xml
 GloboTicket.Services.Payment/obj/
 GloboTicket.Services.ShoppingBasket/obj/
+.vs/
